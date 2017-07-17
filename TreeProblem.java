@@ -47,6 +47,7 @@ public class TreeProblem {
 		inOrder(node.right);
 	}
 
+	// For generic Tree problem
 	public Tree lcaGeneric(Tree node1, Tree node2, Tree root) {
 		if (root == null)
 			return null;
@@ -61,6 +62,7 @@ public class TreeProblem {
 		return (leftLCA != null) ? leftLCA : rightLCA;
 	}
 
+	// Tree having Parent Pointer
 	public Tree lcaBinaryWithParent(Tree node1, Tree node2, Tree root) {
 		if (root == null)
 			return null;
