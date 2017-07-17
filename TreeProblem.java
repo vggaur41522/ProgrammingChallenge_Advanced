@@ -1,7 +1,6 @@
 package adv;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 public class TreeProblem {
@@ -47,7 +46,32 @@ public class TreeProblem {
 		inOrder(node.right);
 	}
 
-	// For generic Tree problem
+	public Tree leftMinima(Tree node) {
+		while (node.left != null) {
+			node = node.left;
+		}
+		return node;
+	}
+
+	public Tree inorderSuccessor(Tree root, Tree node, boolean parntPop) {
+		if (root == null || node == null)
+			return null;
+		if (node.right != null) {
+			return leftMinima(node.right);
+		} else {
+			// Parent Pointer Implementation
+			if (parntPop) {
+				Tree parent = node.parent;
+				while (parent != null && node != parent.left) {
+					node = parent;
+					parent = parent.parent;
+				}
+				return parent;
+			}
+		}
+		return null;
+	}
+
 	public Tree lcaGeneric(Tree node1, Tree node2, Tree root) {
 		if (root == null)
 			return null;
@@ -62,7 +86,6 @@ public class TreeProblem {
 		return (leftLCA != null) ? leftLCA : rightLCA;
 	}
 
-	// Tree having Parent Pointer
 	public Tree lcaBinaryWithParent(Tree node1, Tree node2, Tree root) {
 		if (root == null)
 			return null;
@@ -90,11 +113,15 @@ public class TreeProblem {
 		TreeProblem tpParent = new TreeProblem();
 		tpParent.loadDataParent();
 		tpParent.inOrder(tpParent.root);
-		Tree n1 = tpParent.root.right.right;
-		Tree n2 = tpParent.root.left;
+		Tree n1 = tpParent.root.left.right;
+		Tree n2 = tpParent.root;
 		System.out.println("\nLCA for " + n1.data + " and " + n2.data + " is: "
-				+ tpParent.lcaBinaryWithParent(n1,n2, tpParent.root).data);
-
+				+ tpParent.lcaBinaryWithParent(n1, n2, tpParent.root).data);
+		Tree test = tpParent.inorderSuccessor(tpParent.root, n2, true);
+		if(test == null)
+			System.out.println("\nInorder Successor for present");
+		else
+			System.out.println("\nInorder Successor for " + n2.data + " is: " +test.data);
 	}
 
 	public void loadDataParent() {
