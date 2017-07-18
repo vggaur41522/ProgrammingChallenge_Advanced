@@ -56,7 +56,7 @@ public class TreeProblem {
 			this.data = data;
 		}
 	}
-
+	// Primitive Data Loading
 	public void loadData() {
 		root = new Tree(10);
 		root.left = new Tree(7);
@@ -66,7 +66,16 @@ public class TreeProblem {
 		root.right.left = new Tree(12);
 		root.right.right = new Tree(18);
 	}
-
+	// Data with Parent Pointer
+	public void loadDataParent() {
+		root = new Tree(11, null);
+		root.left = new Tree(8, root);
+		root.left.right = new Tree(10, root.left);
+		root.left.right.left = new Tree(9, root.left.right);
+		root.right = new Tree(18, root);
+		root.right.left = new Tree(13, root.right);
+		root.right.right = new Tree(20, root.right);
+	}
 	public void inOrder(Tree node) {
 		if (node == null)
 			return;
@@ -310,15 +319,4 @@ public class TreeProblem {
 				queue.offer(currNode.right);
 		}
 	}
-
-	public void loadDataParent() {
-		root = new Tree(11, null);
-		root.left = new Tree(8, root);
-		root.left.right = new Tree(10, root.left);
-		root.left.right.left = new Tree(9, root.left.right);
-		root.right = new Tree(18, root);
-		root.right.left = new Tree(13, root.right);
-		root.right.right = new Tree(20, root.right);
-	}
-
 }
