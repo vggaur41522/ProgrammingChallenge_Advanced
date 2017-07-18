@@ -12,7 +12,7 @@ import javax.xml.crypto.Data;
 
 public class TreeProblem {
 
-	private Tree root = null;
+	Tree root = null;
 
 	class Data_Type {
 		private int val;
@@ -56,6 +56,7 @@ public class TreeProblem {
 			this.data = data;
 		}
 	}
+
 	// Primitive Data Loading
 	public void loadData() {
 		root = new Tree(10);
@@ -66,6 +67,7 @@ public class TreeProblem {
 		root.right.left = new Tree(12);
 		root.right.right = new Tree(18);
 	}
+
 	// Data with Parent Pointer
 	public void loadDataParent() {
 		root = new Tree(11, null);
@@ -76,6 +78,7 @@ public class TreeProblem {
 		root.right.left = new Tree(13, root.right);
 		root.right.right = new Tree(20, root.right);
 	}
+
 	public void inOrder(Tree node) {
 		if (node == null)
 			return;
@@ -182,12 +185,15 @@ public class TreeProblem {
 		System.out.print("\n" + k + " smallest no:" + tp.kSmallestItem(tp.root, k));
 
 		/*---------- BST INSERTION -------------*/
-		int[] arr = new int[] { 20, 8, 22, 4, 12, 10, 14 };
+		int[] arr = new int[] { 20, 8, 22, 9, 4, 5, 10, 23 };
 		TreeProblem tn = new TreeProblem();
 		tn.root = tn.loadDataWithType(tn.root, arr);
 		System.out.println();
 		tn.inOrderAdv(tn.root);
 		System.out.println("\nK Th Min using lCount:" + tn.kthMinUsingLCount(tn.root, 3));
+		
+		LongestCommonPath lcp = new LongestCommonPath();
+		System.out.println("\n Longest Consecutive Path :"+lcp.getLCP(tn));
 	}
 
 	public int kthMinUsingLCount(Tree<Data_Type> root, int k) {
