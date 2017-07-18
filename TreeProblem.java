@@ -192,8 +192,13 @@ public class TreeProblem {
 		tn.inOrderAdv(tn.root);
 		System.out.println("\nK Th Min using lCount:" + tn.kthMinUsingLCount(tn.root, 3));
 		
+		/*---------- Longest Consecutive Path  -------------*/
 		LongestCommonPath lcp = new LongestCommonPath();
 		System.out.println("\n Longest Consecutive Path :"+lcp.getLCP(tn));
+		
+		/*---------- Validate BST -------------*/
+		ValidateBST val = new ValidateBST();
+		System.out.println("\n Valid BST :"+val.checkBST(tn));
 	}
 
 	public int kthMinUsingLCount(Tree<Data_Type> root, int k) {

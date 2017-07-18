@@ -1,4 +1,4 @@
-package test;
+package adv;
 
 import java.util.LinkedList;
 import java.util.Queue;
